@@ -1,0 +1,82 @@
+.blog {
+    padding: 30px 5% 0 5%;
+}
+
+.blog > select {
+    margin: 20px;
+}
+
+.blog-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.blog-cell {
+    background: #c3efff;
+    width: 45%;
+    min-height: 200px;
+    min-width: 600px;
+    box-shadow: 5px 5px #888;
+    padding: 10px;
+    text-align: justify;
+    position: relative;
+}
+
+.blog-cell:hover {
+    background: #77dbff;
+}
+
+a, a:hover, a:active {
+    text-decoration: none;
+    color:#000041;
+}
+
+.blog-cell:hover > h3 {
+    text-decoration: underline;
+}
+
+.blog-cell > img {
+    float: left;
+    max-width: 40%;
+    margin: 10px 20px 10px 0;
+}
+
+.blog-cell-date {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    font-size: 0.5em;
+    color:#6d6d6d;
+}
+
+.blog-pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.blog-pagination > button,
+.blog-pagination > input {
+    border: 0;
+    background-color: #c3efff;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    text-align: center;
+    margin: 0 10px;
+    width: 1.5em;
+}
+ 
+.blog-pagination > button:hover,
+.blog-pagination > input:hover,
+.blog-pagination > input.current {
+    background-color: #77dbff;
+}
+
+.blog-pagination > button {
+   width: 200px;
+}
+
+form:has(>.blog-pagination) {
+    margin-top: 50px;
+}

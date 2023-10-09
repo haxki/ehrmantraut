@@ -1,0 +1,52 @@
+.blogpost {
+    background: #c3efff;
+    width: 90%;
+    margin: 0 5% 0 5%;
+    min-height: 600px;
+    box-shadow: 5px 5px #888;
+    padding: 10px;
+    text-align: justify;
+    position: relative;
+}
+
+.blogpost input[type=text], 
+.blogpost textarea {
+    width: 50%;
+}
+
+.blogpost input[type=checkbox] {
+    margin-top: 20px;
+}
+
+.blogpost textarea {
+    height: 200px;
+}
+
+.blogpost > img {
+    float: left;
+    max-width: 40%;
+    margin: 10px 20px 10px 0;
+}
+
+.blogpost-date {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    font-size: 0.5em;
+    color: #6d6d6d;
+}
+
+.blogpost-buttons {
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    width: 90%;
+    bottom: 2em;
+    right: 2em;
+}
+
+.blogpost-buttons input {
+    height: 2em;
+    width: 150px;
+}
