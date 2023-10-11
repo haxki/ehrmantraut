@@ -6,19 +6,23 @@ nav ul li a {
   background: #aae9ff;
 }
 
-html, nav ul li a.sublist {
+html,
+nav ul li a.sublist {
   background: #c3efff;
 }
 
-header, .clock {
+header,
+.clock {
   background: #77dbff;
 }
 
-.content, .popover {
+.content,
+.popover {
   background: #fffedf;
 }
 
-.on-page-li, .disclaimer > div {
+.on-page-li,
+.disclaimer > div {
   background: url(../img/mike.jpg);
 }
 
@@ -35,12 +39,22 @@ body {
   color: #000041;
 }
 
-.disclaimer > div, .fingers, #inner_header, header {
+textarea {
+  min-height: 100px;
+}
+
+.disclaimer > div,
+.fingers,
+#inner_header,
+header {
   user-select: none;
   -webkit-user-select: none;
 }
 
-.autobiography p, .description p, .description h1, nav ul li a.sublist {
+.autobiography p,
+.description p,
+.description h1,
+nav ul li a.sublist {
   font-weight: 200;
 }
 header:has(>h1:first-child) {
@@ -52,6 +66,53 @@ header > h1 {
   text-align: left;
   text-indent: 65px;
   font-size: 50px;
+}
+
+header > h1:nth-child(2),
+header > h1:nth-child(2) > div {
+  display: flex;
+  font-size: 24px;
+  margin-left: 50%;
+  justify-content: center;
+  align-items: center;
+}
+
+header > h1:nth-child(2) > div {
+  margin-left: 0;
+}
+
+header > h1:nth-child(2):has(>div) {
+  margin-left: 45%;
+}
+
+header > h1:nth-child(2) > div > div {
+  width:400px;
+  text-align: right;
+}
+
+header > h1:nth-child(2) a,
+header > h1:nth-child(2) a:hover,
+header > h1:nth-child(2) a:active {
+  text-decoration: none;
+  color:#000041;
+}
+
+header > h1:nth-child(2) a {
+  background-color: #c3efff;
+  margin-left: 20px;
+  box-shadow: 2px 2px grey;
+  width: 250px;
+  text-indent: 0;
+  text-align: center;
+}
+
+header > h1:nth-child(2) a:hover {
+  background-color: #aae9ff;
+}
+
+[class*=blog] h1 > i {
+  color: grey;
+  font-size: 0.75em;
 }
 
 main {
@@ -100,7 +161,8 @@ nav ul li a {
   flex-wrap: nowrap;
 }
 
-.description, .photo {
+.description,
+.photo {
   max-width: 50%;
   flex-grow: 1;
   padding: 50px;
@@ -179,7 +241,8 @@ nav ul li a {
   margin: 60px;
   text-align: center;
 }
-.autobiography p::after, .autobiography p::before {
+.autobiography p::after,
+.autobiography p::before {
   content: " - - - ";
 }
 
@@ -255,7 +318,7 @@ nav ul li a {
   width: 50%;
   margin: 10px 0 10px 50%;
 }
-.form_buttons input {
+.form_buttons > input {
   height: 2em;
   width: 45%;
 }
@@ -334,7 +397,8 @@ nav ul li a {
   font-size: 30px;
   font-weight: 100;
 }
-.fingers div:first-of-type, .fingers div:last-of-type {
+.fingers div:first-of-type,
+.fingers div:last-of-type {
   width: 20%;
   text-align: center;
 }

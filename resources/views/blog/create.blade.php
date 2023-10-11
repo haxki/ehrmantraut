@@ -1,12 +1,13 @@
-@extends('..layouts.main')
-@section('content')
+@extends('..layouts.'.(empty(session('isAdmin')) ? 'main' : 'admin'))
 
+@section('content')
 <div class="content">
     <section id="inner_header"><h3>Мой блог</h3></section>
 	<img src="{{ asset('img/blog.jpg') }}" class="background" height="849" alt="">
     <a href="{{ route('blog.index') }}">
         <img src="{{ asset('img/back.png') }}" width="80" height="50" alt="back">
     </a>
+    
     <form class="form" method="POST" action="{{ route('blog.index') }}" enctype="multipart/form-data">
         @csrf
         <h3>Новый пост</h3><br>
@@ -61,9 +62,10 @@
         </div>
     </form>
 
+    @if (session()->has('isAdmin'))
     <form class="post-form-button" action="{{ route('blog.file_upload') }}">
         <input type="submit" value="Загрузка файлом">
     </form>
+    @endif
 </div>
-
 @endsection

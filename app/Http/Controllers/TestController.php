@@ -3,18 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TestRequest;
+use App\Models\Spy;
 use App\Models\Test;
 use App\Services\TestService;
-use Illuminate\Http\Request;
 
 class TestController extends Controller
 {
     public function index() {
+        Spy::process(request());
         return view('test/index');
     }
     
     public function store(TestRequest $request) {
         $data = $request->validated();
+        Spy::process($request);
 
         $analyse = TestService::verify($data);
         
@@ -27,6 +29,7 @@ class TestController extends Controller
     }
 
     public function table() {
+        Spy::process(request());
         $models = Test::all();
 
         foreach ($models as &$model) {

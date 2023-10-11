@@ -1,6 +1,6 @@
-@extends('..layouts.main')
-@section('content')
+@extends('..layouts.'.(empty(session('isAdmin')) ? 'main' : 'admin'))
 
+@section('content')
 <div class="content" style="height:80%">
     <section id="inner_header"><h3>Мой блог</h3></section>
 	<img src="{{ asset('img/blog.jpg') }}" class="background" height="849" alt="">
@@ -12,10 +12,11 @@
         @isset($model['image'])
             <img src="{{ url('/storage/img/blog/' . $model['image']) }}" alt="Post image">
         @endisset
-        <h1>{{ $model['title'] }}</h1>
+        <h1>{{ $model['title'] }}<i> от {{ $model['author'] }}</i></h1>
         <br>
         <p><?=str_replace("\r\n", '<br>', $model['content'])?></p>
 
+        @if(session('login')==$model['author'] || !empty(session('isAdmin')))
         <div class="blogpost-buttons">
             <form method="GET" action="{{ route("blog.edit", $model['id']) }}">
                 <input type="submit" value="Редактировать">
@@ -26,13 +27,13 @@
                 <input type="submit" value="Удалить">
             </form>
         </div>
+        @endif
+
         <p class="blogpost-date">{{
             $model['created_at'] . ($model['updated_at']!=$model['created_at'] ? ' (redacted at ' . $model['updated_at'] . ')' : '')
         }}</p>
     </section>
-
 </div>
-
 @endsection
 
 @section('extras')

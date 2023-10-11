@@ -1,6 +1,6 @@
-@extends('layouts.main')
-@section('content')
+@extends('layouts.'.(empty(session('isAdmin')) ? 'main' : 'admin'))
 
+@section('content')
 <div class="content">
 	<section id="inner_header"><h3>Контакт</h3></section>
 	<img class="background" src="{{ asset("img/contact.jpg") }}" height="849" alt="">
@@ -126,9 +126,7 @@
 		</div>
 	</form>
 </div>
-
 @endsection
-
 
 @section('extras')
     <script src="{{ asset("js/calendar.js") }}"></script>

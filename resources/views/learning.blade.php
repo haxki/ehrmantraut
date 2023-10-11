@@ -1,6 +1,6 @@
-@extends('layouts.main')
-@section('content')
+@extends('layouts.'.(empty(session('isAdmin')) ? 'main' : 'admin'))
 
+@section('content')
 <div class="content">
 	<section id="inner_header"><h3>Учеба</h3></section>
 	<img src="{{ asset("img/kid.jpg") }}" class="background" height="849" alt="">
@@ -158,7 +158,6 @@
 		</table>
 	</section>
 </div>
-
 @endsection
 
 @section('extras')

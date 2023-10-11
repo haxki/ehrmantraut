@@ -27,11 +27,6 @@
     background: #77dbff;
 }
 
-a, a:hover, a:active {
-    text-decoration: none;
-    color:#000041;
-}
-
 .blog-cell:hover > h3 {
     text-decoration: underline;
 }
@@ -79,4 +74,11 @@ a, a:hover, a:active {
 
 form:has(>.blog-pagination) {
     margin-top: 50px;
+}
+
+a.blog-cell,
+a.blog-cell:hover,
+a.blog-cell:active {
+    text-decoration: none;
+    color:#000041;
 }

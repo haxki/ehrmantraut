@@ -1,6 +1,6 @@
-@extends('..layouts.main')
-@section('content')
+@extends('..layouts.'.(empty(session('isAdmin')) ? 'main' : 'admin'))
 
+@section('content')
 <div class="content">
     <section id="inner_header"><h3>Мой блог</h3></section>
 	<img src="{{ asset('img/blog.jpg') }}" class="background" height="849" alt="">
@@ -19,7 +19,9 @@
                     <h3>{{ $post['title'] }}</h3>
                     <p>{{ $post['content'] }}</p>
                     <p class="blog-cell-date">{{ 
-                        $post['created_at'] . ($post['updated_at']!=$post['created_at'] ? ' (redacted at ' . $post['updated_at'] . ')' : '')
+                        $post['created_at'] 
+                            . ($post['updated_at']!=$post['created_at'] ? ' (redacted at ' . $post['updated_at'] . ')' : '')
+                            . ' от ' . $post['author']
                     }}</p>
                 </a>
             @endfor
@@ -63,11 +65,12 @@
 
     </section>
 
+    @if(session('authorized') == true)
     <form class="post-form-button" action="{{ route('blog.create') }}">
         <input type="submit" value="Добавить пост">
     </form>
+    @endif
 </div>
-
 @endsection
 
 @section('extras')

@@ -1,6 +1,6 @@
-@extends('..layouts.main')
-@section('content')
+@extends('..layouts.'.(empty(session('isAdmin')) ? 'main' : 'admin'))
 
+@section('content')
 <div class="content">
     <section id="inner_header"><h3>Гостевая книга</h3></section>
 	<img src="{{ asset('img/guest_book.jpg') }}" class="background" height="849" alt="">
@@ -22,7 +22,5 @@
             <input type="reset">
         </div>
     </form>
-
 </div>
-
 @endsection

@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Storage;
             } else {
                 $newPost['image'] = NULL;
             }
+            $newPost['author'] = session('login');
             BlogPost::create($newPost);
         }
         public static function update(array $updateData, $id) {

@@ -10,7 +10,15 @@
 <body>
     <header>
         <h1>Мой сайт<h1>
-        
+        @if (session('authorized') == true)
+            <div>
+                <div>{{ session('login') . " (" . session('fio') . ")" }}</div>
+                <a href="{{ route('auth.logout') }}">Выйти</a>
+            </div>
+        @else
+            <a href="{{ route('auth.login') }}">Вход</a>
+            <a href="{{ route('auth.registration') }}">Регистрация</a>
+        @endif
     </header>
     <main>
         <nav><ul>

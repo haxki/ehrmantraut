@@ -1,4 +1,5 @@
-@extends('layouts.main')
+@extends('layouts.'.(empty(session('isAdmin')) ? 'main' : 'admin'))
+
 @section('content')
 	<section id="inner_header"><h3>Фотоальбом</h3></section>
 	<img src="{{ asset("img/mike.jpg") }}" class="background" height="909" alt="">

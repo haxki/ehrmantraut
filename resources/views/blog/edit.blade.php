@@ -1,6 +1,6 @@
-@extends('..layouts.main')
-@section('content')
+@extends('..layouts.'.(empty(session('isAdmin')) ? 'main' : 'admin'))
 
+@section('content')
 <div class="content" style="height:80%">
     <section id="inner_header"><h3>Мой блог</h3></section>
 	<img src="{{ asset('img/blog.jpg') }}" class="background" height="849" alt="">
@@ -49,7 +49,6 @@
         </div>
     </form>
 </div>
-
 @endsection
 
 @section('extras')

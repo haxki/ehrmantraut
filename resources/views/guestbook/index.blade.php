@@ -1,4 +1,5 @@
-@extends('..layouts.main')
+@extends('..layouts.'.(empty(session('isAdmin')) ? 'main' : 'admin'))
+
 @section('content')
 <div class="content">
     <section id="inner_header"><h3>Гостевая книга</h3></section>
@@ -91,9 +92,11 @@
         </div>
     </form>
     
+    @if(!empty(session('isAdmin')))
     <form class="post-form-button" action="{{ route('guestbook.edit') }}">
         <input type="submit" value="Загрузка гостевой книги">
     </form>
+    @endif
 </div>
 @endsection
     

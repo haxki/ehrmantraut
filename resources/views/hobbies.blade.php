@@ -1,4 +1,5 @@
-@extends('layouts.main')
+@extends('layouts.'.(empty(session('isAdmin')) ? 'main' : 'admin'))
+
 @section('content')
 	<div class="content">
 		<section id="inner_header"><h3>Мои интересы</h3></section>

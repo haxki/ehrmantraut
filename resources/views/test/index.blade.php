@@ -1,6 +1,6 @@
-@extends('..layouts.main')
-@section('content')
+@extends('..layouts.'.(empty(session('isAdmin')) ? 'main' : 'admin'))
 
+@section('content')
 <div class="content">
 	<section id="inner_header"><h3>Тест по дискретной математике</h3></section>
 	<img class="background" src="{{ asset("img/exam.jpg") }}" height="849" alt="">
@@ -116,13 +116,13 @@
 		</div>
 	</form>
 
+	@if(session('authorized') == true)
 	<form class="post-form-button" action="{{ route('test.table') }}">
-        <input type="submit" value="Все ответы">
-    </form>
+		<input type="submit" value="Все ответы">
+	</form>
+	@endif
 </div>
-
 @endsection
-
 
 @section('extras')
 	<link rel='stylesheet' type='text/css' href="{{ asset("css/test.css") }}">
