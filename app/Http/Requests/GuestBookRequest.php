@@ -27,6 +27,7 @@ class GuestBookRequest extends FormRequest
             'patronymic' => '',
             'email' => 'required|email',
             'message' => 'required',
+            'image' => 'image',
         ];
     }
 }

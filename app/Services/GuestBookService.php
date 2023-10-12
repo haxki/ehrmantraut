@@ -37,4 +37,29 @@
             $data['date'] = date('d.m.Y');
         }
 
+        public function extractAllWithImages() : array {
+            $rows = [];
+            $file = fopen("storage/{$this->filename}", 'r');
+            
+            while ($row = fgets($file)) {
+                if (strstr($row, "#START_IMAGE_VALUES#") != false) {
+                    break;
+                }
+                $row = substr($row, 1, strlen($row) - 4);   // 4 - "'\r\n"
+                $rowValues = explode("';'", $row);
+                $rowValuesWithKeys = [];
+                for ($i = 0; $i < count($this->columnOrder); $i++) {
+                    $rowValuesWithKeys[$this->columnOrder[$i]] = $rowValues[$i];
+                }
+                array_push($rows, $rowValuesWithKeys);
+            }
+
+            $image = "";
+            while($row = fgets($file)) {
+
+            }
+
+            fclose($file);
+            return $rows;
     }
+}

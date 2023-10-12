@@ -21,7 +21,7 @@
         @endforeach
     </table>
 
-    <form class="form" method="POST" action="{{ route('guestbook.store') }}">
+    <form class="form" method="POST" action="{{ route('guestbook.store') }}" enctype="multipart/form-data">
         @csrf
         <h3 style="text-align:center;margin:0">Оставьте отзыв</h3><br>
 
@@ -65,8 +65,15 @@
             <p class="err-msg">{{ $message }}</p>
         @enderror
 
+        <label for="image"><b><br>Изображение:</b></label>
+        <input type="file" id="image" name="image">
+        @error('image')
+            <p class="err-msg">{{ $message }}</p>
+        @enderror
+
+
         <script>
-            $('#lastname, #firstname, #patronymic, #email, #message')
+            $('#lastname, #firstname, #patronymic, #email, #message, #image')
 				.on('input', function(){ clearValidation($(this)) });
 			
 			function clearValidation(element) {

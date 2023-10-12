@@ -7,6 +7,7 @@ use App\Http\Requests\RegistrationRequest;
 use App\Models\Spy;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
@@ -25,6 +26,7 @@ class AuthController extends Controller
             -> route('auth.login')
             -> withErrors(['password' => 'Логин или пароль введен неправильно.']);
         }
+        Auth::login($user);
         session()->start();
         $user->update(['session_id' => session()->getId()]);
         session()->put([
@@ -41,6 +43,7 @@ class AuthController extends Controller
 
     public function logout() {
         Spy::process(request());
+        Auth::logout();
         session()->forget('authorized');
         session()->forget('login');
         session()->forget('fio');
@@ -66,14 +69,15 @@ class AuthController extends Controller
         $data['role'] = 'user';
         $data['password'] = hash('md5', $data['password']);
         $data['created_at'] = $data['updated_at'] = date('Y-m-d H:i:s');
+        Auth::login(User::where('login', '=', $data['login'])->first());
         session()->start();
         $data['session_id'] = session()->getId();
         session()->put([
             'authorized' => true,
-            'login' => $request['login'],
-            'fio' => $request['fio'],
+            'login' => $data['login'],
+            'fio' => $data['fio'],
         ]);
-        User::insert($data);
+        User::insert($data); 
 
         return redirect()->route('main.index');
     }

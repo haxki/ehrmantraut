@@ -46,14 +46,14 @@ Route::get('/guestbook/edit',    [GuestBookController::class,  'edit'])     -> n
 Route::post('/guestbook/update', [GuestBookController::class,  'update'])   -> name('guestbook.update') -> middleware('admin');
 
 Route::get('/blog',              [BlogController::class,       'index'])    -> name('blog.index');
-Route::get('/blog/create',       [BlogController::class,       'create'])   -> name('blog.create')      -> middleware('authorized');
-Route::post('/blog',             [BlogController::class,       'store'])    -> name('blog.store')       -> middleware('authorized');
-Route::get('/blog/file_upload',  [BlogController::class,       'file_upload']) -> name('blog.file_upload')    -> middleware('admin');
-Route::post('/blog/file_upload', [BlogController::class,       'file_upload_update']) -> name('blog.file_upload_update') -> middleware('admin');
+Route::get('/blog/create',       [BlogController::class,       'create'])   -> name('blog.create');
+Route::post('/blog',             [BlogController::class,       'store'])    -> name('blog.store');
+Route::get('/blog/file_upload',  [BlogController::class,       'file_upload']) -> name('blog.file_upload');
+Route::post('/blog/file_upload', [BlogController::class,       'file_upload_update']) -> name('blog.file_upload_update');
 Route::get('/blog/{id}',         [BlogController::class,       'show'])     -> name('blog.show');
-Route::get('/blog/{id}/edit',    [BlogController::class,       'edit'])     -> name('blog.edit')        -> middleware('authorized');
-Route::post('/blog/{id}',        [BlogController::class,       'update'])   -> name('blog.update')      -> middleware('authorized');
-Route::delete('/blog/{id}',      [BlogController::class,       'destroy'])  -> name('blog.destroy')     -> middleware('authorized');
+Route::get('/blog/{id}/edit',    [BlogController::class,       'edit'])     -> name('blog.edit');
+Route::post('/blog/{id}',        [BlogController::class,       'update'])   -> name('blog.update');
+Route::delete('/blog/{id}',      [BlogController::class,       'destroy'])  -> name('blog.destroy');
       
 Route::get('/login',             [AuthController::class,       'login_form']) -> name('auth.login_form');
 Route::post('/login',            [AuthController::class,       'login'])    -> name('auth.login');

@@ -16,7 +16,7 @@
             $row = $this->compact($rowValues);
             $file = fopen("storage/{$this->filename}", $writingMode);
             fwrite($file, $row);
-            fclose($file);    
+            fclose($file);
         }
         protected function compact(array $rowValues) : string {
             $row = "";
