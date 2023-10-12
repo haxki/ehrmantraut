@@ -459,4 +459,10 @@ nav ul li a {
   box-shadow: 0 0 10px white;
 }
 
+.task3 {
+  color:red;
+  position: absolute;
+  left: 50%;
+  margin-top: -40px;
+}
 /*# sourceMappingURL=style.css.map */

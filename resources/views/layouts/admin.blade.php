@@ -15,6 +15,9 @@
             <a href="{{ route('auth.logout') }}">Выйти</a>
         </div>
     </header>
+    @if(session('something'))
+        <p class="task3">Любимый персонаж: {{ session('something') }}</p>
+    @endif
     <main>
         <nav><ul>
             <li><a href="{{ route('blog.index') }}">Мой блог</a></li>
@@ -37,5 +40,6 @@
         @yield('extras')
     @endif
 
+    
 </body>
 </html>

@@ -20,6 +20,9 @@
             <a href="{{ route('auth.registration') }}">Регистрация</a>
         @endif
     </header>
+    @if(session('something'))
+        <p class="task3">Любимый персонаж: {{ session('something') }}</p>
+    @endif
     <main>
         <nav><ul>
             <li><a href="{{ route('main.index') }}">Главная</a></li>

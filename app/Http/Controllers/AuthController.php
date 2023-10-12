@@ -33,6 +33,7 @@ class AuthController extends Controller
             'authorized' => true,
             'login' => $user['login'],
             'fio' => $user['fio'],
+            'something' => $data['something'],
         ]);
         if ($user['role'] == 'admin') {
             session()->put(['isAdmin' => true]);

@@ -24,6 +24,14 @@
         @error('password')
             <p class="err-msg">{{ $message }}</p>
         @enderror
+        <br>
+
+        <label for="something">Ваш любимый персонаж Breaking Bad:</label>
+        <input id="something" name="something" type="text" placeholder="Введите что-нибудь..."
+            @if(old('something')!=null) value="{{ old('something') }}" @endif>
+        @error('something')
+            <p class="err-msg">{{ $message }}</p>
+        @enderror
 
         <div class="form_buttons">
             <input type="submit" value="Войти">
