@@ -6,6 +6,7 @@
 	<img src="{{ asset("img/guest_book.jpg") }}" class="background" height="1070" alt="">
     <table style="margin: 50px 100px; font-size: 20px">
         <tr>
+            <th>Фото</th>
             <th>Дата</th>
             <th>ФИО</th>
             <th>E-mail</th>
@@ -13,6 +14,7 @@
         </tr>
         @foreach ($rows as $row)
         <tr>
+            <td>@if($row['image'] != '') <img src='{{ $row['image'] }}' style="max-height:100px"> @endif</td>
             <td>{{ $row['date'] }}</td>
             <td>{{ $row['fio'] }}</td>
             <td>{{ $row['email'] }}</td>
