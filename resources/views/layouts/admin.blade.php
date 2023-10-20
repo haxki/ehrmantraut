@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @yield('meta')
 	<script src="{{ asset("js/jquery-3.6.2.js") }}"></script>
     <link rel="stylesheet" type="text/css" href="{{ asset("css/style.css") }}">
 	<title>Мой сайт</title>
@@ -11,7 +12,7 @@
     <header>
         <h1>Мой сайт<h1>
         <div>
-            <div>{{ session('login') . " (" . session('fio') . ")" }}</div>
+            <div><b id="login">{{ session('login') }}</b>{{ " (" . session('fio') . ")" }}</div>
             <a href="{{ route('auth.logout') }}">Выйти</a>
         </div>
     </header>

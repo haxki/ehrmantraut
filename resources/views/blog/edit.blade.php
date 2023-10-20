@@ -10,8 +10,10 @@
 
     <form class="blogpost" enctype="multipart/form-data" method="POST" action="{{ route("blog.update", $model['id']) }}">
         @csrf
-        <img src="{{ url('/storage/img/blog/' . $model['image']) }}">
-        
+        @if ($model['image'] != null) 
+            <img src="{{ url('/storage/img/blog/' . $model['image']) }}">
+        @endif
+
         <label for="title">Заголовок:</label><br>
         <input type="text" id="title" name="title"
             value="{{ old('title') != null ? old('title') : $model['title']}}"

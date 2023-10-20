@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset("css/style.css") }}">
 	<title>Мой сайт</title>
 </head>
+<body>
     <form class="form" method="POST" action="{{ route('auth.registration') }}">
         @csrf
         <h3 style="text-align:center">Регистрация</h3>
@@ -48,4 +49,7 @@
             </a>
         </div>
     </form>
+    <script src="{{ asset('js/jquery-3.6.2.js') }}"></script>
+    <script src="{{ asset('js/ajax/registration.js') }}"></script>
+</body>
 </html>

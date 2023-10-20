@@ -51,10 +51,10 @@ Route::post('/blog',             [BlogController::class,       'store'])    -> n
 Route::get('/blog/file_upload',  [BlogController::class,       'file_upload']) -> name('blog.file_upload');
 Route::post('/blog/file_upload', [BlogController::class,       'file_upload_update']) -> name('blog.file_upload_update');
 Route::get('/blog/{id}',         [BlogController::class,       'show'])     -> name('blog.show');
-Route::get('/blog/{id}/edit',    [BlogController::class,       'edit'])     -> name('blog.edit');
+// Route::get('/blog/{id}/edit',    [BlogController::class,       'edit'])     -> name('blog.edit');
 Route::post('/blog/{id}',        [BlogController::class,       'update'])   -> name('blog.update');
 Route::delete('/blog/{id}',      [BlogController::class,       'destroy'])  -> name('blog.destroy');
-      
+
 Route::get('/login',             [AuthController::class,       'login_form']) -> name('auth.login_form');
 Route::post('/login',            [AuthController::class,       'login'])    -> name('auth.login');
 Route::get('/registration',      [AuthController::class,       'registration_form']) -> name('auth.registration_form');
@@ -62,3 +62,5 @@ Route::post('/registration',     [AuthController::class,       'registration']) 
 Route::get('/logout',            [AuthController::class,       'logout'])   -> name('auth.logout')      -> middleware('authorized');
 
 Route::get('/spy',               [SpyController::class,        'index']) -> name('spy.index')       -> middleware('admin');
+
+Route::get('/try_register',      [AuthController::class,       'try_register']);

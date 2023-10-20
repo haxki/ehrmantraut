@@ -33,17 +33,18 @@ use Illuminate\Support\Facades\Storage;
                 $somethingNew = true;
             }
 
-            if ($currentData['title'] === $updateData['title']) {
+            if (isset($updateData['title']) && $currentData['title'] === $updateData['title']) {
                 unset($updateData['title']);
             } else $somethingNew = true;
 
-            if ($currentData['content'] === $updateData['content']) {
+            if (isset($updateData['content']) && $currentData['content'] === $updateData['content']) {
                 unset($updateData['content']);
             } else $somethingNew = true;
 
             if ($somethingNew) 
                 BlogPost::find($id)->update($updateData);
         }
+
         public static function delete($id) {
             $model = BlogPost::find($id);
             Storage::delete('/public/img/blog/' . $model['image']);

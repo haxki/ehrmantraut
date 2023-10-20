@@ -50,3 +50,44 @@
     height: 2em;
     width: 150px;
 }
+
+.blogpost-delete-button {
+    position: relative;
+    height: 2em;
+    width: 90%;
+    margin: 0 5% 0 5%;
+    box-shadow: 5px 5px #888;
+    border: none;
+    background-color: rgb(228, 39, 39);
+    color: white;
+    justify-content: center;
+    z-index: 2;
+}
+
+.blogpost-delete-button:hover {
+    background-color: rgb(190, 39, 39);
+}
+
+.comment-input {
+    background: #c3efff;
+    width: 90%;
+    margin: 10px 5% 10px 5%;
+    min-height: 200px;
+    box-shadow: 5px 5px #888;
+    padding: 10px;
+    position: relative;
+}
+
+.comment {
+    background: #c3efff;
+    width: 90%;
+    margin: 10px 5% 10px 5%;
+    min-height: 0;
+    box-shadow: 5px 5px #888;
+    padding: 10px;
+    position: relative;
+}
+
+.comment-input textarea {
+    width: -webkit-fill-available;
+}

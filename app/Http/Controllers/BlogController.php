@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\BlogRequest;
+use App\Models\BlogComment;
 use App\Models\BlogPost;
 use App\Models\Spy;
 use App\Services\BlogCsvUploaderService;
 use App\Services\BlogService;
+use Illuminate\Http\Request;
+
 class BlogController extends Controller
 {
     public function index() {
@@ -30,20 +33,32 @@ class BlogController extends Controller
     public function show($id) {
         Spy::process(request());
         $model = BlogPost::find($id);
-        return view('blog/show', compact('model'));
+        $comments = BlogComment::where('post_id', '=', $id)->get();
+        return view('blog/show', compact('model', 'comments'));
     }
+    /** depraved */
     public function edit($id) {
         $model = BlogPost::find($id);
         $this->authorize('update', $model);
         Spy::process(request());
         return view('blog/edit', compact('model'));
     }
-    public function update(BlogRequest $request, $id) {
+    public function update(Request $request, $id) {
         $this->authorize('update', BlogPost::find($id));
-        $updateData = $request->validated();
+        $title = $request->title;
+        $content = $request->content;
+
+        $updateData = ['title' => $title, 'content'=> $content];
+        if (isset($request->image))
+            $updateData['image'] = $request->image;
+        if (isset($request->delete_image))
+            $updateData['delete_image'] = $request->delete_image;
         Spy::process($request);
         BlogService::update($updateData, $id);
-        return redirect() -> route('blog.show', $id);
+        
+        $model = BlogPost::find($id);
+        $comments = BlogComment::where('post_id', '=', $id)->get();
+        return view('blog/show', compact('model', 'comments'));
     }
     public function destroy($id) {
         $this->authorize('destroy', BlogPost::find($id));

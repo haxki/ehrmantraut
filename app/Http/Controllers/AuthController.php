@@ -82,4 +82,9 @@ class AuthController extends Controller
 
         return redirect()->route('main.index');
     }
+
+    public function try_register() {
+        $isOccupied = User::where('login', '=', request('login'))->exists();
+        return json_encode(['occupied' => $isOccupied]);
+    }
 }
